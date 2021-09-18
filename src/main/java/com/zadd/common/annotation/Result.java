@@ -10,13 +10,13 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-public @interface DontResult {
+public @interface Result {
 
     /**
-     * true : default and don't result data
-     * false : result data
+     * true : default and result data
+     * false : don't result data
      *
-     * @return true for don't result
+     * @return true for result
      */
     boolean value() default true;
 }

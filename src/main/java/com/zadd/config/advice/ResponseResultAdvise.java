@@ -1,6 +1,5 @@
 package com.zadd.config.advice;
 
-import com.zadd.common.annotation.DontResult;
 import com.zadd.common.model.Result;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.MethodParameter;
@@ -15,7 +14,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
  * use as controller response interceptor
  * except for annotation DontResult and DontResult's value is true
  *
- * @see DontResult
+ * @see com.zadd.common.annotation.Result
  */
 @Configuration
 @ControllerAdvice(basePackages = "com.zadd")
@@ -35,9 +34,9 @@ public class ResponseResultAdvise implements ResponseBodyAdvice<Object> {
         if (object instanceof Result) {
             return object;
         }
-        if (methodParameter.hasMethodAnnotation(DontResult.class)) {
-            DontResult annotation = methodParameter.getAnnotatedElement().getAnnotation(DontResult.class);
-            if (annotation != null && annotation.value()) {
+        if (methodParameter.hasMethodAnnotation(com.zadd.common.annotation.Result.class)) {
+            com.zadd.common.annotation.Result annotation = methodParameter.getAnnotatedElement().getAnnotation(com.zadd.common.annotation.Result.class);
+            if (annotation != null && !annotation.value()) {
                 return object;
             }
         }

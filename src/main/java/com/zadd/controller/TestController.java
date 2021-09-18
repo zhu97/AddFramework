@@ -1,6 +1,6 @@
 package com.zadd.controller;
 
-import com.zadd.common.annotation.DontResult;
+import com.zadd.common.annotation.Result;
 import com.zadd.ro.TestRO;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +22,7 @@ public class TestController {
     }
 
     @GetMapping("/test2/{name}")
-    @DontResult
+    @Result(value = false)
     public Object test2(@PathVariable("name") String name) {
         Map<String, Object> map = new HashMap<>();
         map.put("hello", "hello");
